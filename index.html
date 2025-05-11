@@ -4,37 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Fresh</title>
-    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-    <div class="card">
-        <img src="" alt="card image" class="card-image" >
-        <div class="card-content">
-            <h2 class="card-title" id="apple">APPLE</h2>
-            <p id="apple-price">€1.69</p>
-            <button class="card-button">Add To Cart</button>
-        </div>
+  
+    <nav class="navbar">
+        <div class="navbar-brand">Daily Fresh</div>
+        <ul class="navbar-links">
+            <li><a href="#" onclick='openPopup()'>Add Items</a></li>
+            <li><a href="#">Go to Cart</a></li>
+        </ul>
+    </nav>
+  
+    <div class="card-container" id="card-container">
+      
     </div>
-
-    <div class="card">
-        <img src="" alt="card image" class="card-image" >
-        <div class="card-content">
-            <h2 class="card-title" id="orange">ORANGE</h2>
-            <p id="orange-price">€0.99</p>
-            <button class="card-button">Add To Cart</button>
-        </div>
+  
+    <div id="popup-container" class="popup-container">
+      <div class="popup">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Add Product</h2>
+        <input type="text" placeholder="Product Name" id="product">
+        <input type="text" placeholder="Product Price" id="price">
+        <button onclick="buttonClick()">Add Product</button>
+      </div>
     </div>
-
-    <div class="card">
-        <img src="" alt="card image" class="card-image" >
-        <div class="card-content">
-            <h2 class="card-title" id="milk">MILK</h2>
-            <p id="milk-price">€1.14</p>
-            <button class="card-button">Add To Cart</button>
-        </div>
-    </div>
+  
+    <script src="index.js"></script>
     
 </body>
 </html>
