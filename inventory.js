@@ -10,9 +10,14 @@ class Inventory extends HTMLElement {
 
     }
 
+    async fetchProducts() {
+        const response = await fetch("./products.json");
+        const products = await response.json();
+        return products;
+    }
+
     connectedCallback() {
-        const response = fetch("./products.json");
-        const products = response.json();
+        const products = this.fetchProducts();
         console.log(products);
     }
 }
