@@ -4,7 +4,9 @@ inventoryTemplate.innerHTML = `<div class="inventory" id="inventory">
 
 class Inventory extends HTMLElement {
     constructor() {
+        super();
         this.prices = {};
+        this.basket = {};
 
     }
 

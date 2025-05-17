@@ -9,6 +9,7 @@ template.innerHTML = `<div class="card-container">
 
 class ItemCard extends HTMLElement {
     constructor() {
+        super();
         this.addedToCart = false;
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(template.content.cloneNode(true));
