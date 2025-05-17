@@ -1,4 +1,4 @@
-const inventoryTemplate = document.createElement('inventoryTemplate');
+const inventoryTemplate = document.createElement('template');
 inventoryTemplate.innerHTML = `<div class="inventory" id="inventory">
                                </div>`;
 
