@@ -13,6 +13,11 @@ class Inventory extends HTMLElement {
     async fetchProducts() {
         const response = await fetch("./products.json");
         const products = await response.json();
+
+        products.forEach( product => {
+            console.log(`Product: ${product.name}, Price: ${product.price}`);
+            prices[product.name] = product.price;
+        });
         return products;
     }
 
