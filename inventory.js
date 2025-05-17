@@ -11,6 +11,7 @@ class Inventory extends HTMLElement {
         this.shadowRoot.appendChild(inventoryTemplate.content.cloneNode(true));
         this.fetchProducts();
         this.renderProducts();
+        <item-card name="Egg" price="1.11"></item-card>
     }
 
     async fetchProducts() {
