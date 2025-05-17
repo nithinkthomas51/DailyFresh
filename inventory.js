@@ -7,7 +7,10 @@ class Inventory extends HTMLElement {
         super();
         this.prices = {};
         this.basket = {};
-
+        this.attachShadow({mode: 'open'});
+        this.shadowRoot.appendChild(inventoryTemplate.content.cloneNode(true));
+        this.fetchProducts();
+        this.renderProducts();
     }
 
     async fetchProducts() {
@@ -16,14 +19,16 @@ class Inventory extends HTMLElement {
 
         products.forEach( product => {
             console.log(`Product: ${product.name}, Price: ${product.price}`);
-            prices[product.name] = product.price;
+            this.prices[product.name] = product.price;
         });
-        return products;
     }
 
-    connectedCallback() {
-        const products = this.fetchProducts();
-        console.log(products);
+    renderProducts() {
+        let productHTML = "";
+        for (const [name, price] of Object.entries(this.prices)) {
+            productHTML += `<item-card name="${name}" price="${price}"></item-card>`;
+        }
+        this.shadowRoot.getElementById('inventory').innerHTML = productHTML;
     }
 }
 
