@@ -15,4 +15,4 @@ class Inventory extends HTMLElement {
     }
 }
 
-window.customElements.define('inventory', Inventory);
+window.customElements.define('inventory-component', Inventory);
