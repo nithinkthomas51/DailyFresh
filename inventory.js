@@ -8,7 +8,6 @@ class Inventory extends HTMLElement {
   constructor() {
     super();
     this.prices = {};
-    this.basket = {};
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(inventoryTemplate.content.cloneNode(true));
     this.fetchProducts();

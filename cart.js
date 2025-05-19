@@ -7,8 +7,13 @@ cartTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
 class Cart extends HTMLElement {
   constructor() {
     super();
+    this.basket = {};
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    
   }
 }
 
