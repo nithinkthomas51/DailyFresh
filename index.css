@@ -104,6 +104,10 @@ body {
   background-color: #0056b3;
 }
 
+.cart-title {
+  text-align: center;
+}
+
 .popup-container {
   display: none;
   position: fixed;
