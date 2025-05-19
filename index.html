@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Fresh</title>
     <link rel="stylesheet" href="index.css">
-</head>
-<body>
-  
+  </head>
+  <body>
+
     <nav class="navbar">
-        <div class="navbar-brand">Daily Fresh</div>
-        <ul class="navbar-links">
-            <li><a href="#" onclick='openPopup()'>Add Items</a></li>
-            <li><a href="#">Go to Cart</a></li>
-        </ul>
+      <div class="navbar-brand">Daily Fresh</div>
+      <ul class="navbar-links">
+        <li><a href="#" onclick='openPopup()'>Add Items</a></li>
+        <li><a href="#">Go to Cart</a></li>
+      </ul>
     </nav>
-  
-    <inventory-component>
-      <item-card name="Egg" price="1.11"></item-card>
-    </inventory-component>
-  
+
+    <div class="inv-cart" id="inv-cart">
+      <inventory-component> </inventory-component>
+      <cart-component> </cart-component>
+    </div>
+
     <div id="popup-container" class="popup-container">
       <div class="popup">
         <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -29,8 +30,9 @@
         <button onclick="buttonClick()">Add Product</button>
       </div>
     </div>
-  
+
+    <script src="itemCard.js"></script>
     <script src="inventory.js"></script>
     
-</body>
+  </body>
 </html>

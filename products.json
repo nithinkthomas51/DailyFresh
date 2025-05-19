@@ -2,5 +2,7 @@
     {"name": "apple", "price" : 1.69},
     {"name": "orange", "price" : 1.13},
     {"name": "milk", "price" : 1.14},
-    {"name": "lemon", "price" : 1.18}
+    {"name": "lemon", "price" : 1.18},
+    { "name": "egg", "price": 1.11 },
+    { "name": "tomato", "price": 1.66 }
 ]
