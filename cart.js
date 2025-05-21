@@ -11,11 +11,18 @@ class Cart extends HTMLElement {
     this.basket = {};
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
-    this.shadowRoot.getElementById('cart').innerHTML = `<cart-item name='apple' quantity=2></cart-item>`;
+  }
+
+  renderCart() {
+    let cartHtml = "";
+    for (const [item, itemQuantity] of Object.entries(this.basket)) {
+      cartHtml += `<cart-item name="${item}" quantity=${itemQuantity}></cart-item>`;
+    }
+    this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
   }
 
   connectedCallback() {
-    
+    this.shadowRoot.getElementById('cart').addEventListener('add-to-cart', () => this.renderCart());
   }
 }
 
