@@ -35,15 +35,16 @@ class CartItem extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log('Adding event listener for add and remove item')
-        this.shadowRoot.getElementById('incrbtn').addEventListener('click', this.incrementQuantity());
-        this.shadowRoot.getElementById('decrbtn').addEventListener('click', this.decrementQuantity());
+        console.log('Adding event listener for add and remove item');
+        this.shadowRoot.getElementById('incrbtn').addEventListener('click', () => this.incrementQuantity());
+        this.shadowRoot.getElementById('decrbtn').addEventListener('click', () => this.decrementQuantity());
     }
 
-    // disconnectedCallback() {
-    //     this.shadowRoot.getElementById('incrbtn').removeEventListener();
-    //     this.shadowRoot.getElementById('decrbtn').removeEventListener();
-    // }
+    disconnectedCallback() {
+        console.log('Removing event listener for add and remove item');
+        this.shadowRoot.getElementById('incrbtn').removeEventListener();
+        this.shadowRoot.getElementById('decrbtn').removeEventListener();
+    }
 
 
 }
