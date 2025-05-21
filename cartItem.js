@@ -1,6 +1,6 @@
 const cartItemTemplate = document.createElement('template');
 cartItemTemplate.innerHTML = `<div class="cartitem-container" id="cartitem-container">
-                                <h4 class="cartitem-name" id="cartitem-name"></h4>
+                                <p class="cartitem-name" id="cartitem-name"><b></b></p>
                                 <p class="quantity" id="quantity"></p>
                                 <button class="cart-btn" id="addItem">+</button>
                                 <button class="cart-btn" id="removeItem">-</button>
@@ -16,11 +16,15 @@ class CartItem extends HTMLElement {
     }
 
     incrementQuantity() {
-        
+        let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        quantity++;
+        this.shadowRoot.getElementById('quantity').innerText = quantity;
     }
 
     decrementQuantity() {
-
+        let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        quantity--;
+        this.shadowRoot.getElementById('quantity').innerText = quantity;
     }
 
     connectedCallback() {
