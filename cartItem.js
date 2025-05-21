@@ -3,8 +3,8 @@ cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                               <div class="cartitem-container" id="cartitem-container">
                                 <p class="cartitem-name" id="cartitem-name"><b></b></p>
                                 <p class="quantity" id="quantity"></p>
-                                <button class="cart-btn" id="addItem">+</button>
-                                <button class="cart-btn" id="removeItem">-</button>
+                                <button class="cart-btn" id="incrbtn">+</button>
+                                <button class="cart-btn" id="decrbtn">-</button>
                               </div>`;
 
 class CartItem extends HTMLElement {
@@ -26,21 +26,24 @@ class CartItem extends HTMLElement {
     }
 
     decrementQuantity() {
+        console.log('Inside decrementQuantity');
         let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        console.log('quantity: ' + quantity);
         quantity--;
+        console.log('Incremented quantity: ' + quantity);
         this.shadowRoot.getElementById('quantity').innerText = quantity;
     }
 
     connectedCallback() {
         console.log('Adding event listener for add and remove item')
-        this.shadowRoot.getElementById('addItem').addEventListener('click', this.incrementQuantity());
-        this.shadowRoot.getElementById('removeItem').addEventListener('click', this.decrementQuantity());
+        this.shadowRoot.getElementById('incrbtn').addEventListener('click', this.incrementQuantity());
+        this.shadowRoot.getElementById('decrbtn').addEventListener('click', this.decrementQuantity());
     }
 
-    disconnectedCallback() {
-        this.shadowRoot.getElementById('addItem').removeEventListener();
-        this.shadowRoot.getElementById('removeItem').removeEventListener();
-    }
+    // disconnectedCallback() {
+    //     this.shadowRoot.getElementById('incrbtn').removeEventListener();
+    //     this.shadowRoot.getElementById('decrbtn').removeEventListener();
+    // }
 
 
 }
