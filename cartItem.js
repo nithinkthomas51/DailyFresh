@@ -17,31 +17,21 @@ class CartItem extends HTMLElement {
     }
 
     incrementQuantity() {
-        console.log('Inside incrementQuantity');
         let itemQuantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
-        console.log('quantity: ' + itemQuantity);
-        itemQuantity++;
-        console.log('Incremented quantity: ' + itemQuantity);
-        this.shadowRoot.getElementById('quantity').innerText = itemQuantity;
+        this.shadowRoot.getElementById('quantity').innerText = ++itemQuantity;
     }
 
     decrementQuantity() {
-        console.log('Inside decrementQuantity');
         let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
-        console.log('quantity: ' + quantity);
-        quantity--;
-        console.log('Incremented quantity: ' + quantity);
-        this.shadowRoot.getElementById('quantity').innerText = quantity;
+        this.shadowRoot.getElementById('quantity').innerText = --quantity;
     }
 
     connectedCallback() {
-        console.log('Adding event listener for add and remove item');
         this.shadowRoot.getElementById('incrbtn').addEventListener('click', () => this.incrementQuantity());
         this.shadowRoot.getElementById('decrbtn').addEventListener('click', () => this.decrementQuantity());
     }
 
     disconnectedCallback() {
-        console.log('Removing event listener for add and remove item');
         this.shadowRoot.getElementById('incrbtn').removeEventListener();
         this.shadowRoot.getElementById('decrbtn').removeEventListener();
     }
