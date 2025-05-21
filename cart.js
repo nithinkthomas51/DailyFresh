@@ -11,7 +11,7 @@ class Cart extends HTMLElement {
     this.basket = {};
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
-    this.shadowRoot.getElementById('cart').innerText = `<cart-item name='apple' quantity=2></cart-item>`;
+    this.shadowRoot.getElementById('cart').innerHTML = `<cart-item name='apple' quantity=2></cart-item>`;
   }
 
   connectedCallback() {
