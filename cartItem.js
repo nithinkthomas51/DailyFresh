@@ -1,5 +1,6 @@
 const cartItemTemplate = document.createElement('template');
-cartItemTemplate.innerHTML = `<div class="cartitem-container" id="cartitem-container">
+cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
+                              <div class="cartitem-container" id="cartitem-container">
                                 <p class="cartitem-name" id="cartitem-name"><b></b></p>
                                 <p class="quantity" id="quantity"></p>
                                 <button class="cart-btn" id="addItem">+</button>
@@ -16,9 +17,12 @@ class CartItem extends HTMLElement {
     }
 
     incrementQuantity() {
-        let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
-        quantity++;
-        this.shadowRoot.getElementById('quantity').innerText = quantity;
+        console.log('Inside incrementQuantity');
+        let itemQuantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        console.log('quantity: ' + itemQuantity);
+        itemQuantity++;
+        console.log('Incremented quantity: ' + itemQuantity);
+        this.shadowRoot.getElementById('quantity').innerText = itemQuantity;
     }
 
     decrementQuantity() {
@@ -28,6 +32,7 @@ class CartItem extends HTMLElement {
     }
 
     connectedCallback() {
+        console.log('Adding event listener for add and remove item')
         this.shadowRoot.getElementById('addItem').addEventListener('click', this.incrementQuantity());
         this.shadowRoot.getElementById('removeItem').addEventListener('click', this.decrementQuantity());
     }
