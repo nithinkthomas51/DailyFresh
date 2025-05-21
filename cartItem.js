@@ -11,6 +11,8 @@ class CartItem extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(cartItemTemplate.content.cloneNode(true));
+        this.shadowRoot.getElementById('cartitem-name').innerText = this.getAttribute('name').toUpperCase();
+        this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('quantity');
     }
 
     incrementQuantity() {
@@ -33,3 +35,5 @@ class CartItem extends HTMLElement {
 
 
 }
+
+window.customElements.define('cart-item', CartItem);
