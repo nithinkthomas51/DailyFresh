@@ -131,9 +131,19 @@ body {
   align-items: center;
 }
 
-.cart-btn-cont {
+.cartname-cont {
   display: flex;
-  flex-direction: row-reverse;
+  width: 150px;
+  justify-content: flex-start;
+}
+
+.cartquantity-cont {
+  width: 75px;
+}
+
+.cartbtn-cont {
+  width: 75px;
+  display: flex;
   justify-content: space-evenly;
 }
 

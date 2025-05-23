@@ -1,9 +1,13 @@
 const cartItemTemplate = document.createElement('template');
 cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                               <div class="cartitem-container" id="cartitem-container">
-                                <p class="cartitem-name" id="cartitem-name"><b></b></p>
-                                <p class="quantity" id="quantity"></p>
-                                <div id="cart-btn-cont">
+                                <div class="cartname-cont">
+                                    <p class="cartitem-name" id="cartitem-name"></p>
+                                </div>
+                                <div class="cartquantity-cont">
+                                    <p class="quantity" id="quantity"></p>
+                                </div>
+                                <div class="cartbtn-cont">
                                     <button class="cart-btn" id="incrbtn">+</button>
                                     <button class="cart-btn" id="decrbtn">-</button>
                                 </div>
