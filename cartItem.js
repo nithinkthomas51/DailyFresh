@@ -32,8 +32,8 @@ class CartItem extends HTMLElement {
     }
 
     disconnectedCallback() {
-        this.shadowRoot.getElementById('incrbtn').removeEventListener();
-        this.shadowRoot.getElementById('decrbtn').removeEventListener();
+        this.shadowRoot.getElementById('incrbtn').removeEventListener('click', this.incrementQuantity);
+        this.shadowRoot.getElementById('decrbtn').removeEventListener('click', this.decrementQuantity);
     }
 
 

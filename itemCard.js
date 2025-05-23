@@ -47,7 +47,7 @@ class ItemCard extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.shadowRoot.getElementById('card-button').removeEventListener();
+    this.shadowRoot.getElementById('card-button').removeEventListener('click', this.updateCart);
   }
 }
 
