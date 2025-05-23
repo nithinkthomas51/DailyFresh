@@ -26,7 +26,7 @@ class Cart extends HTMLElement {
       if (e.detail.addToCart)
         this.basket[e.detail.name] = e.detail.quantity;
       else
-        delete basket[e.detail.name];
+        delete this.basket[e.detail.name];
       this.renderCart();
     });
   }
