@@ -30,7 +30,7 @@ class ItemCard extends HTMLElement {
         quantity: 1,
         addToCart: this.addedToCart
       },
-      composed: true
+      composed: true,
     });
     let addToCartBtn = this.shadowRoot.getElementById('card-button');
     addToCartBtn.dispatchEvent(cartUpdateEvent);
