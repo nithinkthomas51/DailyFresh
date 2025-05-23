@@ -22,7 +22,10 @@ class Cart extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.getElementById('cart').addEventListener('add-to-cart', () => this.renderCart());
+    this.shadowRoot.getElementById('cart').addEventListener('add-to-cart', (e) => {
+      basket[e.detail.name] = e.detail.quantity;
+      this.renderCart();
+    });
   }
 }
 

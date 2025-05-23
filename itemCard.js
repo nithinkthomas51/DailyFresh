@@ -20,13 +20,26 @@ class ItemCard extends HTMLElement {
 
   updateCart() {
     this.addedToCart = !this.addedToCart;
+    let product = this.shadowRoot.getElementById('product-name').innerText;
+    let itemPrice = this.shadowRoot.getElementById('product-price').innerText;
+    const cartUpdateEvent = new CustomEvent('add-to-cart', {
+      bubbles: true, 
+      detail: {
+        name: product,
+        price: itemPrice,
+        quantity: 1,
+        addToCart: this.addedToCart
+      }
+      composed: true
+    });
     let addToCartBtn = this.shadowRoot.getElementById('card-button');
+    addToCartBtn.dispatchEvent(cartUpdateEvent);
     if (this.addedToCart) {
       addToCartBtn.innerText = 'Remove From Cart';
     } else {
       addToCartBtn.innerText = 'Add To Cart';
     }
-
+    
   }
 
   connectedCallback() {
