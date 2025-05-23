@@ -3,8 +3,10 @@ cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                               <div class="cartitem-container" id="cartitem-container">
                                 <p class="cartitem-name" id="cartitem-name"><b></b></p>
                                 <p class="quantity" id="quantity"></p>
-                                <button class="cart-btn" id="incrbtn">+</button>
-                                <button class="cart-btn" id="decrbtn">-</button>
+                                <div id="cart-btn-cont">
+                                    <button class="cart-btn" id="incrbtn">+</button>
+                                    <button class="cart-btn" id="decrbtn">-</button>
+                                </div>
                               </div>`;
 
 class CartItem extends HTMLElement {

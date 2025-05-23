@@ -108,6 +108,16 @@ body {
   text-align: center;
 }
 
+.cart {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin: 5px;
+  padding: 20px;
+}
+
 .cartitem-container {
   width: 300px;
   height: 25px;
@@ -119,6 +129,12 @@ body {
   padding: 5px;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.cart-btn-cont {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
 }
 
 .popup-container {
