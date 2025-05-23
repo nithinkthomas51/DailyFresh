@@ -23,7 +23,10 @@ class Cart extends HTMLElement {
 
   connectedCallback() {
     document.addEventListener('add-to-cart', (e) => {
-      this.basket[e.detail.name] = e.detail.quantity;
+      if (e.detail.addToCart)
+        this.basket[e.detail.name] = e.detail.quantity;
+      else
+        delete basket[e.detail.name];
       this.renderCart();
     });
   }
