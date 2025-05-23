@@ -33,7 +33,7 @@ class ItemCard extends HTMLElement {
       composed: true,
     });
     let addToCartBtn = this.shadowRoot.getElementById('card-button');
-    addToCartBtn.dispatchEvent(cartUpdateEvent);
+    this.dispatchEvent(cartUpdateEvent);
     if (this.addedToCart) {
       addToCartBtn.innerText = 'Remove From Cart';
     } else {

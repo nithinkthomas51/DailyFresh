@@ -22,7 +22,7 @@ class Cart extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.getElementById('cart').addEventListener('add-to-cart', (e) => {
+    document.addEventListener('add-to-cart', (e) => {
       this.basket[e.detail.name] = e.detail.quantity;
       this.renderCart();
     });
