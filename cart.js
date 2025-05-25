@@ -17,7 +17,7 @@ class Cart extends HTMLElement {
   renderCart() {
     let cartHtml = "";
     for (const [item, itemDetails] of Object.entries(this.basket)) {
-      cartHtml += `<cart-item name="${item}" quantity=${itemDetails.quantity}> price=${itemDetails.price}</cart-item>`;
+      cartHtml += `<cart-item name="${item}" itemQuantity=${itemDetails.quantity}> itemPrice=${itemDetails.price}></cart-item>`;
     }
     this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
   }

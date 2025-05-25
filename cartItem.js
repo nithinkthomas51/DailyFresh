@@ -23,8 +23,8 @@ class CartItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(cartItemTemplate.content.cloneNode(true));
         this.shadowRoot.getElementById('cartitem-name').innerText = this.getAttribute('name').toUpperCase();
-        this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('quantity');
-        this.shadowRoot.getElementById('price-section').innerText = this.getAttribute('price');
+        this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('itemQuantity');
+        this.shadowRoot.getElementById('price-section').innerText = this.getAttribute('itemPrice');
     }
 
     incrementQuantity() {
