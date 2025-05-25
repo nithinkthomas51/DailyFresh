@@ -12,6 +12,9 @@ cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                                     <button class="cart-btn" id="incrbtn">+</button>
                                     <button class="cart-btn" id="decrbtn">-</button>
                                 </div>
+                                <div id="price-cont">
+                                    <p>€<span id="price-section"></span></p>
+                                </div>
                               </div>`;
 
 class CartItem extends HTMLElement {
@@ -21,16 +24,25 @@ class CartItem extends HTMLElement {
         this.shadowRoot.appendChild(cartItemTemplate.content.cloneNode(true));
         this.shadowRoot.getElementById('cartitem-name').innerText = this.getAttribute('name').toUpperCase();
         this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('quantity');
+        this.shadowRoot.getElementById('price-section').innerText = this.getAttribute('price');
     }
 
     incrementQuantity() {
         let itemQuantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = ++itemQuantity;
+        this.updatePrice(itemQuantity);
+    }
+
+    updatePrice(itemQuantity) {
+        let itemPrice = parseInt(this.shadowRoot.getElementById('price-section').innerText);
+        itemPrice = itemQuantity * itemPrice;
+        this.shadowRoot.getElementById('price-section').innerText = itemPrice;
     }
 
     decrementQuantity() {
         let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = --quantity;
+        this.updatePrice(quantity);
     }
 
     connectedCallback() {

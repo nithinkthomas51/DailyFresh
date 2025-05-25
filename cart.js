@@ -9,24 +9,30 @@ class Cart extends HTMLElement {
   constructor() {
     super();
     this.basket = {};
+    this.priceList = {};
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
   }
 
   renderCart() {
     let cartHtml = "";
-    for (const [item, itemQuantity] of Object.entries(this.basket)) {
-      cartHtml += `<cart-item name="${item}" quantity=${itemQuantity}></cart-item>`;
+    for (const [item, itemDetails] of Object.entries(this.basket)) {
+      cartHtml += `<cart-item name="${item}" quantity=${itemDetails.quantity}> price=${itemDetails.price}</cart-item>`;
     }
     this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
   }
 
   connectedCallback() {
     document.addEventListener('updateCart', (e) => {
-      if (e.detail.addToCart)
-        this.basket[e.detail.name] = e.detail.quantity;
-      else
-        delete this.basket[e.detail.name];
+      const { name, itemQuantity, itemPrice, addToCart } = e.detail;
+      if (addToCart) {
+        this.basket[name] = {quantity: 0, price: 0};
+        this.basket[name].quantity += itemQuantity;
+        this.basket[name].price += itemPrice;
+      }
+      else {
+         delete this.basket[name];
+      }
       this.renderCart();
     });
   }
