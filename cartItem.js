@@ -1,5 +1,6 @@
 const cartItemTemplate = document.createElement('template');
 cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
+                              <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
                               <div class="cartitem-container" id="cartitem-container">
                                 <div class="cartname-cont">
                                     <p class="cartitem-name" id="cartitem-name"></p>

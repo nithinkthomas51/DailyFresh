@@ -22,7 +22,7 @@ class Cart extends HTMLElement {
   }
 
   connectedCallback() {
-    document.addEventListener('add-to-cart', (e) => {
+    document.addEventListener('updateCart', (e) => {
       if (e.detail.addToCart)
         this.basket[e.detail.name] = e.detail.quantity;
       else
