@@ -9,7 +9,6 @@ class Cart extends HTMLElement {
   constructor() {
     super();
     this.basket = {};
-    this.priceList = {};
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
   }
@@ -27,8 +26,8 @@ class Cart extends HTMLElement {
       const { name, itemQuantity, itemPrice, addToCart } = e.detail;
       if (addToCart) {
         this.basket[name] = {quantity: 0, price: 0};
-        this.basket[name].quantity += itemQuantity;
-        this.basket[name].price += itemPrice;
+        this.basket[name].quantity += parseInt(itemQuantity);
+        this.basket[name].price += parseInt(itemPrice);
       }
       else {
          delete this.basket[name];
