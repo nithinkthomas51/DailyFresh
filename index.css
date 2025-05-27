@@ -46,8 +46,10 @@ body {
 }
 
 .inv-cart {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 2fr 1px 1fr;
+  gap: 20px;
+  height: 100vh;
 }
 
 .vertical-line {
