@@ -24,7 +24,11 @@ class Cart extends HTMLElement {
 
   connectedCallback() {
     document.addEventListener('updateCart', (e) => {
-      const { name, quantity, price, addToCart } = e.detail;
+      // const { name, quantity, price, addToCart } = e.detail;
+      const name = e.detail.name;
+      const quantity = e.detail.quantity;
+      const price = e.detail.price;
+      const addToCart = e.detail.addToCart;
       console.log(`Name : ${name}, Quantity: ${quantity}, Price: ${price}, Add to Cart: ${addToCart}`);
       if (addToCart) {
         this.basket[name] = {itemQuantity: 0, itemPrice: 0};
