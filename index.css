@@ -135,12 +135,13 @@ body {
   font-family: 'Lato', sans-serif;
   display: flex;
   width: 150px;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .cartquantity-cont {
   font-family: 'Lato', sans-serif;
   width: 75px;
+  justify-content: center;
 }
 
 .cartbtn-cont {
