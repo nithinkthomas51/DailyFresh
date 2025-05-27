@@ -16,20 +16,20 @@ class Cart extends HTMLElement {
   renderCart() {
     let cartHtml = "";
     for (const [item, itemDetails] of Object.entries(this.basket)) {
-      console.log(`Item : ${item}, Quantity: ${itemDetails.quantity}, Price: ${itemDetails.price}`);
-      cartHtml += `<cart-item name="${item}" itemQuantity="${itemDetails.quantity}" itemPrice="${itemDetails.price}"></cart-item>`;
+      console.log(`Item : ${item}, Quantity: ${itemDetails.itemQuantity}, Price: ${itemDetails.itemPrice}`);
+      cartHtml += `<cart-item name="${item}" itemQuantity="${itemDetails.itemQuantity}" itemPrice="${itemDetails.itemPrice}"></cart-item>`;
     }
     this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
   }
 
   connectedCallback() {
     document.addEventListener('updateCart', (e) => {
-      const { name, itemQuantity, itemPrice, addToCart } = e.detail;
-      console.log(`Name : ${name}, Quantity: ${itemQuantity}, Price: ${itemPrice}, Add to Cart: ${addToCart}`);
+      const { name, quantity, price, addToCart } = e.detail;
+      console.log(`Name : ${name}, Quantity: ${quantity}, Price: ${price}, Add to Cart: ${addToCart}`);
       if (addToCart) {
-        this.basket[name] = {quantity: 0, price: 0};
-        this.basket[name].quantity += parseInt(itemQuantity);
-        this.basket[name].price += parseInt(itemPrice);
+        this.basket[name] = {itemQuantity: 0, itemPrice: 0};
+        this.basket[name].itemQuantity += parseInt(quantity);
+        this.basket[name].itemPrice += parseInt(price);
       }
       else {
          delete this.basket[name];

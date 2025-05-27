@@ -26,8 +26,8 @@ class ItemCard extends HTMLElement {
       bubbles: true, 
       detail: {
         name: product,
-        price: itemPrice,
         quantity: 1,
+        price: itemPrice,
         addToCart: this.addedToCart
       },
       composed: true,
