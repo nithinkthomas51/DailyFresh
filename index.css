@@ -140,11 +140,11 @@ body {
 
 .cartquantity-cont {
   font-family: 'Lato', sans-serif;
-  width: 65px;
+  width: 75px;
 }
 
 .cartbtn-cont {
-  width: 60px;
+  width: 75px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -154,7 +154,9 @@ body {
 }
 
 .cartprice-cont {
-  width: 125px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .popup-container {
