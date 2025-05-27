@@ -12,7 +12,7 @@ cartItemTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                                     <button class="cart-btn" id="incrbtn">+</button>
                                     <button class="cart-btn" id="decrbtn">-</button>
                                 </div>
-                                <div id="price-cont">
+                                <div class="cartprice-cont" id="price-cont">
                                     <p>€<span id="price-section"></span></p>
                                 </div>
                               </div>`;
@@ -28,19 +28,19 @@ class CartItem extends HTMLElement {
     }
 
     incrementQuantity() {
-        let itemQuantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        let itemQuantity = parseFloat(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = ++itemQuantity;
         this.updatePrice(itemQuantity);
     }
 
     updatePrice(itemQuantity) {
-        let itemPrice = parseInt(this.shadowRoot.getElementById('price-section').innerText);
+        let itemPrice = parseFloat(this.shadowRoot.getElementById('price-section').innerText);
         itemPrice = itemQuantity * itemPrice;
         this.shadowRoot.getElementById('price-section').innerText = itemPrice;
     }
 
     decrementQuantity() {
-        let quantity = parseInt(this.shadowRoot.getElementById('quantity').innerText);
+        let quantity = parseFloat(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = --quantity;
         this.updatePrice(quantity);
     }
