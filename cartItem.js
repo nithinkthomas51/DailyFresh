@@ -21,8 +21,9 @@ class CartItem extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.price = parseFloat(this.getAttribute('itemPrice'));
+        this.itemName = this.getAttribute('name');
         this.shadowRoot.appendChild(cartItemTemplate.content.cloneNode(true));
-        this.shadowRoot.getElementById('cartitem-name').innerText = this.getAttribute('name').toUpperCase();
+        this.shadowRoot.getElementById('cartitem-name').innerText = this.itemName.toUpperCase();
         this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('itemQuantity');
         this.shadowRoot.getElementById('price-section').innerText = this.price;
     }
@@ -30,6 +31,14 @@ class CartItem extends HTMLElement {
     incrementQuantity() {
         let itemQuantity = parseFloat(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = ++itemQuantity;
+        this.dispatchEvent(new CustomEvent('incrementItem', {
+            bubbles: true, 
+            detail: {
+                item: this.itemName,
+                price: this.price,
+            },
+            composed: true,
+        }));
         this.updatePrice(itemQuantity);
     }
 
@@ -42,6 +51,14 @@ class CartItem extends HTMLElement {
     decrementQuantity() {
         let quantity = parseFloat(this.shadowRoot.getElementById('quantity').innerText);
         this.shadowRoot.getElementById('quantity').innerText = --quantity;
+        this.dispatchEvent(new CustomEvent('decrementItem', {
+            bubbles: true, 
+            detail: {
+                item: this.itemName,
+                price: this.price,
+            },
+            composed: true,
+        }));
         this.updatePrice(quantity);
     }
 

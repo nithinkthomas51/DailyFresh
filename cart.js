@@ -29,7 +29,6 @@ class Cart extends HTMLElement {
 
   connectedCallback() {
     document.addEventListener('updateCart', (e) => {
-      // const { name, quantity, price, addToCart } = e.detail;
       const name = e.detail.name;
       const quantity = e.detail.quantity;
       const price = e.detail.price;
@@ -38,14 +37,30 @@ class Cart extends HTMLElement {
         this.basket[name] = {itemQuantity: 0, itemPrice: 0};
         this.basket[name].itemQuantity += parseInt(quantity);
         this.basket[name].itemPrice += parseFloat(price);
-        this.totalPrice += parseFloat(price);
+        this.totalPrice = Math.round(this.totalPrice + parseFloat(price) * 100) / 100;
       }
       else {
-        this.totalPrice -= parseFloat(price);
+        this.totalPrice = Math.round((this.totalPrice - parseFloat(price)) * 100) / 100;
         delete this.basket[name];
       }
       this.renderCart();
     });
+
+    document.addEventListener('incrementItem', (e) => {
+      let item = e.detail.item;
+      let price = parseFloat(e.detail.price);
+      this.basket[item].itemQuantity++; 
+      this.totalPrice = Math.round((this.totalPrice + price) * 100) / 100;
+      this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
+    });
+
+    document.addEventListener('decrementItem', (e) => {
+      let item = e.detail.item;
+      let price = parseFloat(e.detail.price);
+      this.basket[item].itemQuantity--; 
+      this.totalPrice = Math.round((this.totalPrice - price) * 100) / 100;
+      this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
+    })
   }
 }
 
