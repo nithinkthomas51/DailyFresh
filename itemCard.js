@@ -22,7 +22,7 @@ class ItemCard extends HTMLElement {
     this.addedToCart = !this.addedToCart;
     let product = this.shadowRoot.getElementById('product-name').innerText;
     let priceText = this.shadowRoot.getElementById('product-price').innerText;
-    let itemPrice = parseInt(priceText);
+    let itemPrice = parseFloat(priceText);
     console.log(`Item Price: ${itemPrice}`);
     const cartUpdateEvent = new CustomEvent('updateCart', {
       bubbles: true, 

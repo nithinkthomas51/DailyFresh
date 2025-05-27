@@ -33,7 +33,7 @@ class Cart extends HTMLElement {
       if (addToCart) {
         this.basket[name] = {itemQuantity: 0, itemPrice: 0};
         this.basket[name].itemQuantity += parseInt(quantity);
-        this.basket[name].itemPrice += parseInt(price);
+        this.basket[name].itemPrice += parseFloat(price);
       }
       else {
          delete this.basket[name];
