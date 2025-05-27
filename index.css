@@ -46,8 +46,8 @@ body {
 }
 
 .inv-cart {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: row;
 }
 
 .vertical-line {
