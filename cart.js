@@ -49,7 +49,8 @@ class Cart extends HTMLElement {
     document.addEventListener('incrementItem', (e) => {
       let item = e.detail.item;
       let price = parseFloat(e.detail.price);
-      this.basket[item].itemQuantity++; 
+      this.basket[item].itemQuantity++;
+      this.basket[item].itemPrice = Math.round((this.basket[item].itemQuantity * price) * 100) / 100; 
       this.totalPrice = Math.round((this.totalPrice + price) * 100) / 100;
       this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
     });
@@ -57,7 +58,8 @@ class Cart extends HTMLElement {
     document.addEventListener('decrementItem', (e) => {
       let item = e.detail.item;
       let price = parseFloat(e.detail.price);
-      this.basket[item].itemQuantity--; 
+      this.basket[item].itemQuantity--;
+      this.basket[item].itemPrice = Math.round((this.basket[item].itemQuantity * price) * 100) / 100; 
       this.totalPrice = Math.round((this.totalPrice - price) * 100) / 100;
       this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
     })
