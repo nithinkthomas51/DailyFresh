@@ -50,6 +50,12 @@ body {
   grid-template-columns: 2fr 1fr;
 }
 
+.vertical-line {
+  width: 1px;
+  height: 100%;
+  background-color: grey;
+}
+
 .inv-title {
   text-align: center;
 }
@@ -116,6 +122,11 @@ body {
   overflow: hidden;
   margin: 5px;
   padding: 20px;
+}
+
+.total-cont {
+  display: flex;
+  justify-content: center
 }
 
 .cartitem-container {

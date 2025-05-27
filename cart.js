@@ -3,12 +3,16 @@ cartTemplate.innerHTML = `<link rel="stylesheet" href="index.css" />
                           <h2 class="cart-title" id="cart-title">CART</h2>
                           <div class="cart" id="cart">
                           </div>
-                          <h3 id="total-title"></h3>`;
+                          <hr>
+                          <div class="total-cont" id="total-cont">
+                              <h3>TOTAL AMOUNT : €<span id="total-amount"></span></h3>
+                          </div>`;
 
 class Cart extends HTMLElement {
   constructor() {
     super();
     this.basket = {};
+    this.totalPrice = 0;
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(cartTemplate.content.cloneNode(true));
   }
@@ -20,6 +24,7 @@ class Cart extends HTMLElement {
       cartHtml += `<cart-item name="${item}" itemQuantity="${itemDetails.itemQuantity}" itemPrice="${itemDetails.itemPrice}"></cart-item>`;
     }
     this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
+    this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
   }
 
   connectedCallback() {
@@ -29,14 +34,15 @@ class Cart extends HTMLElement {
       const quantity = e.detail.quantity;
       const price = e.detail.price;
       const addToCart = e.detail.addToCart;
-      console.log(`Name : ${name}, Quantity: ${quantity}, Price: ${price}, Add to Cart: ${addToCart}`);
       if (addToCart) {
         this.basket[name] = {itemQuantity: 0, itemPrice: 0};
         this.basket[name].itemQuantity += parseInt(quantity);
         this.basket[name].itemPrice += parseFloat(price);
+        this.totalPrice += parseFloat(price);
       }
       else {
-         delete this.basket[name];
+        this.totalPrice -= parseFloat(price);
+        delete this.basket[name];
       }
       this.renderCart();
     });
