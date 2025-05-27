@@ -37,14 +37,10 @@ class Cart extends HTMLElement {
         this.basket[name] = {itemQuantity: 0, itemPrice: 0};
         this.basket[name].itemQuantity += parseInt(quantity);
         this.basket[name].itemPrice += parseFloat(price);
-        console.log(`Total Price: ${this.totalPrice} Item Price: ${parseFloat(price)}`);
         this.totalPrice = Math.round((this.totalPrice + parseFloat(price)) * 100) / 100;
-        console.log(`New Total Price: ${this.totalPrice}`);
       }
       else {
-        console.log(`Total Price: ${this.totalPrice} Item Price: ${parseFloat(price)}`);
-        this.totalPrice = Math.round((this.totalPrice - parseFloat(price)) * 100) / 100;
-        console.log(`New Total Price: ${this.totalPrice}`);
+        this.totalPrice = Math.round((this.totalPrice - (this.basket[name].itemQuantity * parseFloat(price))) * 100) / 100;
         delete this.basket[name];
       }
       this.renderCart();
@@ -54,9 +50,7 @@ class Cart extends HTMLElement {
       let item = e.detail.item;
       let price = parseFloat(e.detail.price);
       this.basket[item].itemQuantity++; 
-      console.log(`Total Price: ${this.totalPrice} Item Price: ${parseFloat(price)}`);
       this.totalPrice = Math.round((this.totalPrice + price) * 100) / 100;
-      console.log(`New Total Price: ${this.totalPrice}`);
       this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
     });
 
@@ -64,9 +58,7 @@ class Cart extends HTMLElement {
       let item = e.detail.item;
       let price = parseFloat(e.detail.price);
       this.basket[item].itemQuantity--; 
-      console.log(`Total Price: ${this.totalPrice} Item Price: ${parseFloat(price)}`);
       this.totalPrice = Math.round((this.totalPrice - price) * 100) / 100;
-      console.log(`New Total Price: ${this.totalPrice}`);
       this.shadowRoot.getElementById('total-amount').innerText = this.totalPrice;
     })
   }
