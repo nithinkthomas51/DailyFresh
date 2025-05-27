@@ -21,10 +21,11 @@ class CartItem extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
+        this.price = parseFloat(this.getAttribute('itemPrice'));
         this.shadowRoot.appendChild(cartItemTemplate.content.cloneNode(true));
         this.shadowRoot.getElementById('cartitem-name').innerText = this.getAttribute('name').toUpperCase();
         this.shadowRoot.getElementById('quantity').innerText = this.getAttribute('itemQuantity');
-        this.shadowRoot.getElementById('price-section').innerText = this.getAttribute('itemPrice');
+        this.shadowRoot.getElementById('price-section').innerText = this.price;
     }
 
     incrementQuantity() {
@@ -35,7 +36,7 @@ class CartItem extends HTMLElement {
 
     updatePrice(itemQuantity) {
         let itemPrice = parseFloat(this.shadowRoot.getElementById('price-section').innerText);
-        itemPrice = itemQuantity * itemPrice;
+        itemPrice = Math.round(itemQuantity * this.price * 100) / 100;
         this.shadowRoot.getElementById('price-section').innerText = itemPrice;
     }
 
