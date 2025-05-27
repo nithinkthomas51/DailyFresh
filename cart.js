@@ -16,6 +16,7 @@ class Cart extends HTMLElement {
   renderCart() {
     let cartHtml = "";
     for (const [item, itemDetails] of Object.entries(this.basket)) {
+      console.log(`Item : ${item}, Quantity: ${itemDetails.quantity}, Price: ${itemDetails.price}`);
       cartHtml += `<cart-item name="${item}" itemQuantity="${itemDetails.quantity}" itemPrice="${itemDetails.price}"></cart-item>`;
     }
     this.shadowRoot.getElementById('cart').innerHTML = cartHtml;
@@ -24,6 +25,7 @@ class Cart extends HTMLElement {
   connectedCallback() {
     document.addEventListener('updateCart', (e) => {
       const { name, itemQuantity, itemPrice, addToCart } = e.detail;
+      console.log(`Name : ${name}, Quantity: ${itemQuantity}, Price: ${itemPrice}, Add to Cart: ${addToCart}`);
       if (addToCart) {
         this.basket[name] = {quantity: 0, price: 0};
         this.basket[name].quantity += parseInt(itemQuantity);
